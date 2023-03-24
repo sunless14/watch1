@@ -73,6 +73,10 @@ void Error_Handler(void);
 #define LED_CS_GPIO_Port GPIOA
 #define LED_RST_Pin GPIO_PIN_4
 #define LED_RST_GPIO_Port GPIOA
+#define motor_Pin GPIO_PIN_2
+#define motor_GPIO_Port GPIOG
+#define beep_Pin GPIO_PIN_7
+#define beep_GPIO_Port GPIOG
 #define led0_Pin GPIO_PIN_13
 #define led0_GPIO_Port GPIOG
 #define led1_Pin GPIO_PIN_14
