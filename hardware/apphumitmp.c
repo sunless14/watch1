@@ -23,7 +23,7 @@ void getAHT10(ahtData_t *ahtData){
 	HAL_I2C_Master_Receive(&hi2c1, AHT_ADDRESS, rhTemp, 6, UINT8_MAX); /*读取转换结果*/
 	/*结果共6B：状态-湿度-湿度-湿度（4）温度（4）-温度-温度*/
 	rht = (rhTemp[1]<<12) + (rhTemp[2]<<4) + (rhTemp[3]>>4);
-	ahtData->humi = rht*100.0 / 1024 / 1024;                               /*计算湿度*/
+	ahtData->humi = rht * 100.0 / 1024 / 1024;                               /*计算湿度*/
 	rht = ((rhTemp[3] & 0x0f)<<16) + (rhTemp[4]<<8) + rhTemp[5];
-	ahtData->humi = rht;//*100.0 / 1024 / 1024;                               /*计算温度*/
+	ahtData->temp = rht * 100.0 / 1024 / 1024;                               /*计算温度*/
 }

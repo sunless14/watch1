@@ -45,6 +45,8 @@ typedef struct key_obj
 
 void key_Init(_KEY_OBJ *key);
 void key_Runtime(_KEY_OBJ *key);
+void key_init(void);
+uint8_t KeyScan(void);
 
 
 #endif

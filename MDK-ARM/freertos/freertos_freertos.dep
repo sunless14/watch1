@@ -1,7 +1,7 @@
 Dependencies for Project 'freertos', Target 'freertos': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
 F (startup_stm32f407xx.s)(0x641D49DC)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -I ../Core/Inc-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F407xx SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o freertos/startup_stm32f407xx.o)
-F (../Core/Src/main.c)(0x641D49D9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/main.o -MD)
+F (../Core/Src/main.c)(0x641D88ED)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/main.o -MD)
 I (..\Core\Inc\main.h)(0x641D49D9)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63F4C875)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x641D48BB)
@@ -57,24 +57,24 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x63F4C836)
 I (..\Core\Inc\adc.h)(0x64199A3C)
 I (..\Core\Inc\i2c.h)(0x641902DC)
-I (..\Core\Inc\rtc.h)(0x641D48BA)
+I (..\Core\Inc\rtc.h)(0x641D5CCD)
 I (..\Core\Inc\spi.h)(0x64180D77)
 I (..\Core\Inc\tim.h)(0x6401EC7A)
 I (..\Core\Inc\usart.h)(0x641D48BB)
 I (..\Core\Inc\gpio.h)(0x63F9DC8D)
-I (..\appTask\appTask.h)(0x64035845)
-I (..\hardware\key.h)(0x63FB0059)
+I (..\appTask\appTask.h)(0x641D792B)
+I (..\hardware\key.h)(0x641D8511)
 I (..\hardware\ringbuffer.h)(0x63FB0059)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h)(0x63F4C836)
-I (..\hardware\GUI.h)(0x64187087)
-I (..\hardware\test.h)(0x6418710B)
+I (..\hardware\apphumitmp.h)(0x641D5BD0)
 I (..\hardware\lcd.h)(0x641863E6)
 I (E:\keli5\ARM\ARMCLANG\include\stdlib.h)(0x63884908)
+I (..\hardware\GUI.h)(0x64187087)
+I (..\hardware\test.h)(0x6418710B)
 I (E:\keli5\Keil\ARM_Compiler\1.7.2\Include\EventRecorder.h)(0x5B8F507E)
-I (..\hardware\apphumitmp.h)(0x641996C2)
 I (..\hardware\appheart.h)(0x641AB2C1)
 I (..\hardware\appstep.h)(0x641CF6FB)
 I (E:\keli5\ARM\ARMCLANG\include\string.h)(0x63884908)
@@ -266,7 +266,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x63F4C875)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63F4C875)
 I (E:\keli5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (../Core/Src/rtc.c)(0x641D48BA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/rtc.o -MD)
-I (..\Core\Inc\rtc.h)(0x641D48BA)
+I (..\Core\Inc\rtc.h)(0x641D5CCD)
 I (..\Core\Inc\main.h)(0x641D49D9)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63F4C875)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x641D48BB)
@@ -1737,8 +1737,8 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x63F4C836)
-F (..\appTask\appTask.c)(0x6418219B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/apptask.o -MD)
-I (..\appTask\appTask.h)(0x64035845)
+F (..\appTask\appTask.c)(0x641D7F9C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/apptask.o -MD)
+I (..\appTask\appTask.h)(0x641D792B)
 I (..\Core\Inc\main.h)(0x641D49D9)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63F4C875)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x641D48BB)
@@ -1792,15 +1792,21 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h)(0x63F4C836
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x63F4C836)
-I (..\hardware\key.h)(0x63FB0059)
+I (..\hardware\key.h)(0x641D8511)
 I (..\hardware\ringbuffer.h)(0x63FB0059)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h)(0x63F4C836)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h)(0x63F4C836)
-F (..\appTask\appTask.h)(0x64035845)()
-F (..\hardware\key.c)(0x63FB0059)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/key.o -MD)
-I (..\hardware\key.h)(0x63FB0059)
+I (..\hardware\apphumitmp.h)(0x641D5BD0)
+I (..\Core\Inc\i2c.h)(0x641902DC)
+I (..\Core\Inc\rtc.h)(0x641D5CCD)
+I (..\hardware\lcd.h)(0x641863E6)
+I (E:\keli5\ARM\ARMCLANG\include\stdlib.h)(0x63884908)
+I (..\hardware\GUI.h)(0x64187087)
+F (..\appTask\appTask.h)(0x641D792B)()
+F (..\hardware\key.c)(0x641D8A37)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/key.o -MD)
+I (..\hardware\key.h)(0x641D8511)
 I (..\Core\Inc\main.h)(0x641D49D9)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63F4C875)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x641D48BB)
@@ -1844,7 +1850,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x63F4C875)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63F4C875)
 I (E:\keli5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\hardware\ringbuffer.h)(0x63FB0059)
-F (..\hardware\key.h)(0x63FB0059)()
+F (..\hardware\key.h)(0x641D8511)()
 F (..\hardware\ringbuffer.c)(0x63FB0059)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/ringbuffer.o -MD)
 I (..\hardware\ringbuffer.h)(0x63FB0059)
 I (..\Core\Inc\main.h)(0x641D49D9)
@@ -2034,12 +2040,12 @@ I (E:\keli5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\hardware\lcd.h)(0x641863E6)
 I (E:\keli5\ARM\ARMCLANG\include\stdlib.h)(0x63884908)
 I (..\hardware\test.h)(0x6418710B)
-I (..\hardware\key.h)(0x63FB0059)
+I (..\hardware\key.h)(0x641D8511)
 I (..\hardware\ringbuffer.h)(0x63FB0059)
 F (..\hardware\test.h)(0x6418710B)()
-F (..\hardware\apphumitmp.h)(0x641996C2)()
-F (..\hardware\apphumitmp.c)(0x641996C2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/apphumitmp.o -MD)
-I (..\hardware\apphumitmp.h)(0x641996C2)
+F (..\hardware\apphumitmp.h)(0x641D5BD0)()
+F (..\hardware\apphumitmp.c)(0x641D6E8B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O3 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../appTask -I ../hardware -Wno-invalid-source-encoding-I./RTE/Compiler-I./RTE/_freertos-IE:/keli5/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IE:/keli5/Keil/ARM_Compiler/1.7.2/Include-IE:/keli5/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o freertos/apphumitmp.o -MD)
+I (..\hardware\apphumitmp.h)(0x641D5BD0)
 I (..\Core\Inc\i2c.h)(0x641902DC)
 I (..\Core\Inc\main.h)(0x641D49D9)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63F4C875)

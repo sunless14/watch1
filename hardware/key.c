@@ -154,3 +154,67 @@ void key_Runtime(_KEY_OBJ *key)
 	}
 
 }
+
+
+    /* 按键KEY0 */
+	   _KEY_OBJ KEY0 =
+   {
+	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
+	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
+	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
+	   .GPIOx            = key0_GPIO_Port,  /* KEY0的GPIO Port */
+	   .GPIO_Pin         = key0_Pin,        /* KEY0的GPIO Pin */
+	   .init             = key_Init,        /* 构造函数 */
+   }; 
+	  _KEY_OBJ KEY1 =
+   {
+	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
+	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
+	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
+	   .GPIOx            = key1_GPIO_Port,  /* KEY1的GPIO Port */
+	   .GPIO_Pin         = key1_Pin,        /* KEY1的GPIO Pin */
+	   .init             = key_Init,        /* 构造函数 */
+   };
+	 _KEY_OBJ KEY2 =
+   {
+	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
+	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
+	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
+	   .GPIOx            = key2_GPIO_Port,  /* KEY2的GPIO Port */
+	   .GPIO_Pin         = key2_Pin,        /* KEY2的GPIO Pin */
+	   .init             = key_Init,        /* 构造函数 */
+   };
+	 _KEY_OBJ KEY3 =
+   {
+	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
+	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
+	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
+	   .GPIOx            = key3_GPIO_Port,  /* KEY3的GPIO Port */
+	   .GPIO_Pin         = key3_Pin,        /* KEY3的GPIO Pin */
+	   .init             = key_Init,        /* 构造函数 */
+   };
+
+void key_init(void){
+	 KEY0.init(&KEY0);                      /* 初始化KEY0 */ 
+   KEY1.init(&KEY1);	                    /* 初始化KEY1 */ 
+   KEY2.init(&KEY2);	                    /* 初始化KEY2 */
+	 KEY3.init(&KEY3);	                    /* 初始化KEY3 */
+}
+
+uint8_t KeyScan(void){
+	 KEY0.runtime(&KEY0);                   /* 扫描KEY0 */ 
+   KEY1.runtime(&KEY1);	                  /* 扫描KEY1 */
+	 KEY2.runtime(&KEY2);	                  /* 扫描KEY2 */
+	 KEY3.runtime(&KEY3);	                  /* 扫描KEY3 */
+	 
+	 if(KEY0.status == KEY_LONG) return 11;          /* 检测KEY0是否被按下 */
+	 else if(KEY1.status == KEY_LONG) return 12;     /* 检测KEY1是否被按下 */
+	 else if(KEY2.status == KEY_LONG) return 13;     /* 检测KEY2是否被按下 */
+	 else if(KEY3.status == KEY_LONG) return 14;     /* 检测KEY2是否被按下 */
+	
+	 else if(KEY0.status == KEY_DOWN) return 1;      /* 检测KEY0是否被按下 */
+	 else if(KEY1.status == KEY_DOWN) return 2;      /* 检测KEY1是否被按下 */
+	 else if(KEY2.status == KEY_DOWN) return 3;      /* 检测KEY2是否被按下 */
+	 else if(KEY3.status == KEY_DOWN) return 4;      /* 检测KEY2是否被按下 */
+	 else return 0;                                  /* 是否都没被按下 */
+}

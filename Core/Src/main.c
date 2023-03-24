@@ -108,18 +108,19 @@ int main(void)
 	EventRecorderInitialize(EventRecordAll,1U);
 	EventRecorderStart();
 	LCD_Init();
-	sportsInfo_t *sport;
-	uint32_t data;
-	//ahtData_t *ahtdata;
+	HAL_GPIO_WritePin(beep_GPIO_Port,beep_Pin,GPIO_PIN_RESET);
+	uint8_t KeyValue;
+	LCD_ShowNum(0, 0, KeyValue, 5, 16);
+	key_init();
 	//appStartTask();
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
-  MX_FREERTOS_Init();
+  //osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
+  //MX_FREERTOS_Init();
 
   /* Start scheduler */
-  osKernelStart();
+  //osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
@@ -128,7 +129,10 @@ int main(void)
   { 
 
     /* USER CODE END WHILE */
-
+		KeyValue = KeyScan();
+		printf("%d",KeyValue + 1);
+		LCD_ShowNum(0, 0, KeyValue, 5, 16);
+		HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

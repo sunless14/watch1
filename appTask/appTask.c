@@ -1,63 +1,95 @@
  #include "appTask.h"
-
-
-    /* 按键KEY0 */
-	   _KEY_OBJ KEY0 =
-   {
-	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
-	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
-	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
-	   .GPIOx            = key0_GPIO_Port,  /* KEY1的GPIO Port */
-	   .GPIO_Pin         = key0_Pin,        /* KEY1的GPIO Pin */
-	   .init             = key_Init,        /* 构造函数 */
-   }; 
-	    /* 按键KEY0 */
-	  _KEY_OBJ KEY1 =
-   {
-	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
-	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
-	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
-	   .GPIOx            = key1_GPIO_Port,  /* KEY1的GPIO Port */
-	   .GPIO_Pin         = key1_Pin,        /* KEY1的GPIO Pin */
-	   .init             = key_Init,        /* 构造函数 */
-   };
-	 _KEY_OBJ KEY2 =
-   {
-	   .status           = KEY_UP,          /* 按键的初始状态都是抬起 */
-	   .effective_Level  = LOW,             /* 根据原理图，按键是低电平有效（NPN） */
-	   .filter_Count     = 2,               /* 滤波次数2，如果2ms扫描一次，那么滤波时间等于4ms */
-	   .GPIOx            = key2_GPIO_Port,  /* KEY1的GPIO Port */
-	   .GPIO_Pin         = key2_Pin,        /* KEY1的GPIO Pin */
-	   .init             = key_Init,        /* 构造函数 */
-   };
-uint8_t KeyScan(void){
-   KEY0.init(&KEY0);                      /* 初始化KEY0 */ 
-   KEY1.init(&KEY1);	                    /* 初始化KEY1 */ 
-   KEY2.init(&KEY2);	                    /* 初始化KEY2 */ 	
-	 KEY0.runtime(&KEY0);                   /* 扫描KEY0 */ 
-   KEY1.runtime(&KEY1);	                  /* 扫描KEY1 */
-	 KEY2.runtime(&KEY2);	                  /* 扫描KEY2 */
-	 
-	 if(KEY0.status == KEY_DOWN) return 1;           /* 检测KEY0是否被按下 */
-	 else if(KEY1.status == KEY_DOWN) return 2;      /* 检测KEY1是否被按下 */
-	 else if(KEY2.status == KEY_DOWN) return 3;      /* 检测KEY2是否被按下 */
-	 else return 0;                                       /* 是否都没被按下 */
-}
-
-
 	
-static TaskHandle_t led0TaskHandle = NULL;  /*led0任务句柄*/
-TaskHandle_t led1TaskHandle = NULL;  /*led1任务句柄*/
-static TaskHandle_t printTaskHandle = NULL; /*串口守护任务句柄*/
-static TaskHandle_t keyTaskHandle = NULL;   /*按键扫描任务句柄*/
+static TaskHandle_t led0TaskHandle = NULL;       /*led0任务句柄*/
+TaskHandle_t led1TaskHandle = NULL;              /*led1任务句柄*/
+static TaskHandle_t printTaskHandle = NULL;      /*串口守护任务句柄*/
+static TaskHandle_t keyTaskHandle = NULL;        /*按键扫描任务句柄*/
+static TaskHandle_t mainMenuTaskHandle = NULL;   /*时间显示任务句柄*/
+static TaskHandle_t timeSetTaskHandle = NULL;    /*时间显示任务句柄*/
 
 
-
+static RTC_TimeTypeDef rtcTime;          /*当前时间*/
+static RTC_DateTypeDef rtcDate;          /*当前日期*/
+static char cDateTime[40];
 static char pcToPrint[80];
 xQueueHandle xQueuePrint;
+xQueueHandle queueKeyHandle;             /*按键处理队列*/
 
 
 
+ /******************************************************************************
+ 
+ *函数名：showMainMenu
+ *函数功能：任务函数，主界面刷新，读取时间并刷新显示
+ *形参：
+ *返回值：
+ *任务优先级：
+ 
+ ******************************************************************************/
+static void MainMenuTask(void * pvParameters){
+	 uint8_t keyValue;
+	 ahtData_t ahtData;
+	 char  week[7][7] = {"Mon","Tues","Wed", "Thurs", "Fri", "Sat", "Sun"};
+	 while(1){
+		 HAL_RTC_GetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
+		 HAL_RTC_GetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
+		 
+		 getAHT10(&ahtData);
+		 
+		 LCD_Clear(WHITE);
+		 LCD_ShowString(16,0,16,"beijing time",1);
+		 sprintf(cDateTime,"20%02d-%02d-%02d %s",rtcDate.Year, rtcDate.Month, rtcDate.Date, week[rtcDate.WeekDay]);
+		 LCD_ShowString(4, 16, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%02d:%02d:%02d",rtcTime.Hours, rtcTime.Minutes, rtcTime.Seconds);
+		 LCD_ShowString(32, 32, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%3.1f",ahtData.temp);
+		 LCD_ShowString(16, 48, 16,"temp", 1);
+		 LCD_ShowString(64, 48, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%2d%%",(uint8_t)ahtData.humi);
+		 LCD_ShowString(16, 64, 16,"humi", 1);
+		 LCD_ShowString(64, 64, 16,cDateTime, 1);
+		 vTaskDelay(pdMS_TO_TICKS(500));                     /*延时500MS*/
+	 }
+ }
+
+ /******************************************************************************
+ 
+ *函数名：timeSetTask
+ *函数功能：任务函数，主界面刷新，读取时间并刷新显示
+ *形参：
+ *返回值：
+ *任务优先级：
+ 
+ ******************************************************************************/
+static void timeSetTask(void * pvParameters){
+	 static uint8_t timeSetPosi = 0;
+	 uint8_t keyValue,flashFlag = 0;
+	 int8_t dataTime[7] = {0};
+	 ahtData_t ahtData;
+	 char  week[7][7] = {"Mon","Tues","Wed", "Thurs", "Fri", "Sat", "Sun"};
+	 while(1){
+		 HAL_RTC_GetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
+		 HAL_RTC_GetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
+		 
+		 getAHT10(&ahtData);
+		 
+		 LCD_Clear(WHITE);
+		 LCD_ShowString(16,0,16,"beijing time",1);
+		 sprintf(cDateTime,"20%02d-%02d-%02d %s",rtcDate.Year, rtcDate.Month, rtcDate.Date, week[rtcDate.WeekDay]);
+		 LCD_ShowString(4, 16, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%02d:%02d:%02d",rtcTime.Hours, rtcTime.Minutes, rtcTime.Seconds);
+		 LCD_ShowString(32, 32, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%3.1f",ahtData.temp);
+		 LCD_ShowString(16, 48, 16,"temp", 1);
+		 LCD_ShowString(64, 48, 16,cDateTime, 1);
+		 sprintf(cDateTime,"%2d%%",(uint8_t)ahtData.humi);
+		 LCD_ShowString(16, 64, 16,"humi", 1);
+		 LCD_ShowString(64, 64, 16,cDateTime, 1);
+		 vTaskDelay(pdMS_TO_TICKS(500));                     /*延时500MS*/
+	 }
+ }
+
+  
  /******************************************************************************
  
  *函数名：led0task
@@ -117,23 +149,6 @@ xQueueHandle xQueuePrint;
  static void keyTask(void * pvParameters){
 	 uint8_t keyValue;
 	 extern TIM_HandleTypeDef htim2;
-	 while(1){
-		 keyValue = KeyScan();
-		 if(keyValue == 1){
-			 sprintf(pcToPrint,"key0, bit0...\r\n\r\n");
-			 xQueueSendToBack(xQueuePrint, pcToPrint, 0);
-			 xTaskNotify(led1TaskHandle, 0x01, eSetBits);
-		 }else if(keyValue == 2){
-			 sprintf(pcToPrint,"key1, bit1...\r\n\r\n");
-			 xQueueSendToBack(xQueuePrint, pcToPrint, 0);
-			 xTaskNotify(led1TaskHandle, 0x02, eSetBits);
-		 }else if(keyValue == 3){
-			 HAL_TIM_Base_Start_IT(&htim2);
-			 sprintf(pcToPrint,"key2,start tim2...\r\n\r\n");
-			 xQueueSendToBack(xQueuePrint, pcToPrint, 0);    		 
-	   }
-		 vTaskDelay(pdMS_TO_TICKS(100));                     /*延时100MS*/
-	 }
  }
 
  /******************************************************************************
@@ -163,6 +178,7 @@ xQueueHandle xQueuePrint;
  ******************************************************************************/
 void appStartTask(void){
 	 xQueuePrint =  xQueueCreate(2, sizeof(pcToPrint));
+	 queueKeyHandle = xQueueCreate(2,sizeof(uint8_t));
 	 if(xQueuePrint != NULL){
 			taskENTER_CRITICAL();
 			xTaskCreate(led0Task,        /*任务函数*/
@@ -171,7 +187,6 @@ void appStartTask(void){
 									NULL,            /*任务参数*/
 									3,               /*任务优先级，越小越高*/
 									&led0TaskHandle);/*任务句柄*/
-	 
 			xTaskCreate(led1Task,        /*任务函数*/
 									"led1Task",      /*任务名*/
 									128,             /*任务堆栈大小，单位为word，128word = 4B*/
@@ -190,6 +205,13 @@ void appStartTask(void){
 									NULL,            /*任务参数*/
 									4,               /*任务优先级，越小越高*/
 									&keyTaskHandle); /*任务句柄*/
+		xTaskCreate(MainMenuTask,      /*任务函数*/
+									"MainMenu",      /*任务名*/
+									512,             /*任务堆栈大小，单位为word，128word = 4B*/
+									NULL,            /*任务参数*/
+									2,               /*任务优先级，越小越高*/
+									&mainMenuTaskHandle); /*任务句柄*/
+								
 			taskEXIT_CRITICAL();
 	 }
  }

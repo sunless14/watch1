@@ -5,7 +5,7 @@
 #include "main.h"
 typedef struct{
 	float humi;
-	uint32_t temp;
+	float temp;
 }ahtData_t;
 
 void getAHT10(ahtData_t* ahtData);
