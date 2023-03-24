@@ -106,8 +106,8 @@ int main(void)
 	EventRecorderInitialize(EventRecordAll,1U);
 	EventRecorderStart();
 	LCD_Init();
-	uint16_t mpuData = 3;
-	uint8_t state;
+	sportsInfo_t *sport;
+	uint32_t data;
 	//ahtData_t *ahtdata;
 	//appStartTask();
   /* USER CODE END 2 */
@@ -126,7 +126,8 @@ int main(void)
   { 
 
     /* USER CODE END WHILE */
-
+    sport = useAccToStep();
+		printf("%d\n",sport->stepCount);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
